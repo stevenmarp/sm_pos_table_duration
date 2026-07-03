@@ -1,7 +1,7 @@
 /** @odoo-module **/
 
 import { patch } from "@web/core/utils/patch";
-import { FloorScreen } from "@pos_restaurant/app/floor_screen/floor_screen";
+import { FloorScreen } from "@pos_restaurant/app/screens/floor_screen/floor_screen";
 import { useState, onWillDestroy } from "@odoo/owl";
 
 patch(FloorScreen.prototype, {
