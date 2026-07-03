@@ -2,6 +2,7 @@
 
 import { patch } from "@web/core/utils/patch";
 import { FloorScreen } from "@pos_restaurant/app/screens/floor_screen/floor_screen";
+import { deserializeDateTime } from "@web/core/l10n/dates";
 import { useState, onWillDestroy } from "@odoo/owl";
 
 patch(FloorScreen.prototype, {
@@ -19,7 +20,14 @@ patch(FloorScreen.prototype, {
             return "";
         }
         const starts = orders
-            .map((o) => (o.date_order?.ts ?? new Date(o.date_order).getTime()))
+            .map((o) => {
+                const d = o.date_order;
+                if (!d) {
+                    return NaN;
+                }
+                // luxon DateTime has .ts; otherwise a server UTC string
+                return typeof d === "string" ? deserializeDateTime(d).ts : d.ts;
+            })
             .filter((t) => !isNaN(t));
         if (!starts.length) {
             return "";
