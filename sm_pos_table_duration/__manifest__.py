@@ -24,8 +24,10 @@ restaurant floor plan.
     "assets": {
         "point_of_sale.assets": [
             "sm_pos_table_duration/static/src/js/**/*.js",
-            "sm_pos_table_duration/static/src/xml/**/*.xml",
             "sm_pos_table_duration/static/src/scss/**/*.scss",
+        ],
+        "web.assets_qweb": [
+            "sm_pos_table_duration/static/src/xml/**/*.xml",
         ],
     },
     "installable": True,
