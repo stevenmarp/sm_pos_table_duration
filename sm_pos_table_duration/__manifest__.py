@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "POS Restaurant Table Seated Time",
-    "version": "16.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Point of Sale",
     "summary": "Show how long each table has been seated directly on the restaurant floor plan",
     "description": """

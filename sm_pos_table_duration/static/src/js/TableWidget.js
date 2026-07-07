@@ -3,24 +3,34 @@ odoo.define('sm_pos_table_duration.TableWidget', function(require) {
 
     const TableWidget = require('pos_restaurant.TableWidget');
     const Registries = require('point_of_sale.Registries');
-    const { useState, onWillDestroy } = owl;
+    const { useState } = owl.hooks;
 
     const SmTableWidget = (TableWidget) =>
         class extends TableWidget {
-            setup() {
-                super.setup();
+            constructor() {
+                super(...arguments);
                 this.smState = useState({ now: Date.now() });
-                const tick = setInterval(() => {
+            }
+
+            mounted() {
+                if (super.mounted) {
+                    super.mounted(...arguments);
+                }
+                this.tick = setInterval(() => {
                     this.smState.now = Date.now();
                 }, 1000);
-                onWillDestroy(() => {
-                    clearInterval(tick);
-                });
+            }
+
+            willUnmount() {
+                clearInterval(this.tick);
+                if (super.willUnmount) {
+                    super.willUnmount(...arguments);
+                }
             }
 
             smSeatedTime() {
                 const now = this.smState.now;
-                const orders = this.env.pos.getTableOrders(this.props.table.id).filter(o => !o.finalized);
+                const orders = this.env.pos.get_table_orders(this.props.table).filter(o => !o.finalized);
                 if (!orders || !orders.length) {
                     return "";
                 }
@@ -45,7 +55,7 @@ odoo.define('sm_pos_table_duration.TableWidget', function(require) {
             }
 
             isOccupied() {
-                return this.orderCount > 0 || this.env.pos.getCustomerCount(this.props.table.id) > 0;
+                return this.orderCount > 0 || this.env.pos.get_customer_count(this.props.table) > 0;
             }
         };
 
