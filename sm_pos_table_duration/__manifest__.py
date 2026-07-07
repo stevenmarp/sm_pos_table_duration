@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "POS Restaurant Table Seated Time",
-    "version": "15.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Point of Sale",
     "summary": "Show how long each table has been seated directly on the restaurant floor plan",
     "description": """
@@ -21,13 +21,12 @@ restaurant floor plan.
     "license": "OPL-1",
     "images": ["static/description/banner.gif"],
     "depends": ["pos_restaurant"],
-    "assets": {
-        "point_of_sale.assets": [
-            "sm_pos_table_duration/static/src/js/**/*.js",
-            "sm_pos_table_duration/static/src/xml/**/*.xml",
-            "sm_pos_table_duration/static/src/scss/**/*.scss",
-        ],
-    },
+    "data": [
+        "views/templates.xml",
+    ],
+    "qweb": [
+        "static/src/xml/TableWidget.xml",
+    ],
     "installable": True,
     "application": False,
     "auto_install": False,
