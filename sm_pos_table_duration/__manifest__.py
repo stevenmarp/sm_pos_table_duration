@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Restaurant Table Seated Time",
-    "version": "18.0.1.0.0",
+    "name": "POS Restaurant Table Seated Time",
+    "version": "17.0.1.0.0",
     "category": "Point of Sale",
     "summary": "Show how long each table has been seated directly on the restaurant floor plan",
     "description": """
-Restaurant Table Seated Time
-============================
+POS Restaurant Table Seated Time
+================================
 
 Show the elapsed seated time on every occupied table of the POS
 restaurant floor plan.
@@ -23,7 +23,7 @@ restaurant floor plan.
     "depends": ["pos_restaurant"],
     "assets": {
         "point_of_sale._assets_pos": [
-            "sm_pos_table_duration/static/src/*",
+            "sm_pos_table_duration/static/src/**/*",
         ],
     },
     "installable": True,

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pos_restaurant.Table" t-inherit="pos_restaurant.Table" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('infos')]" position="inside">
+            <span t-if="isOccupied() and smSeatedTime()"
+                  class="sm-seated-time"
+                  t-esc="smSeatedTime()"/>
+        </xpath>
+    </t>
+
+</templates>
