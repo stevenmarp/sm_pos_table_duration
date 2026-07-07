@@ -20,13 +20,13 @@ odoo.define('sm_pos_table_duration.TableWidget', function(require) {
 
             smSeatedTime() {
                 const now = this.smState.now;
-                const orders = this.env.pos.getTableOrders(this.props.table.id);
+                const orders = this.env.pos.getTableOrders(this.props.table.id).filter(o => !o.finalized);
                 if (!orders || !orders.length) {
                     return "";
                 }
                 const starts = orders
                     .map((o) => {
-                        const d = o.date_order;
+                        const d = o.validation_date || o.creation_date;
                         if (!d) {
                             return NaN;
                         }
@@ -45,9 +45,7 @@ odoo.define('sm_pos_table_duration.TableWidget', function(require) {
             }
 
             isOccupied() {
-                return (
-                    this.env.pos.getCustomerCount(this.props.table.id) > 0 || this.props.table.order_count > 0
-                );
+                return this.orderCount > 0 || this.env.pos.getCustomerCount(this.props.table.id) > 0;
             }
         };
 
