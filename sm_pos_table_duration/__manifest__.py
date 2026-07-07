@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Restaurant Table Seated Time",
+    "name": "POS Restaurant Table Seated Time",
     "version": "19.0.1.0.0",
     "category": "Point of Sale",
     "summary": "Show how long each table has been seated directly on the restaurant floor plan",
     "description": """
-Restaurant Table Seated Time
+POS Restaurant Table Seated Time
 ============================
 
 Show the elapsed seated time on every occupied table of the POS
